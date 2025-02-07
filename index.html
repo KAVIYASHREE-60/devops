@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Background</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.5s ease;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <h1>Move your mouse!</h1>
+
+    <script>
+        document.body.addEventListener('mousemove', function(e) {
+            const x = e.clientX;
+            const y = e.clientY;
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            // Calculate the color change based on mouse position
+            const red = Math.floor((x / width) * 255);
+            const green = Math.floor((y / height) * 255);
+            const blue = 255 - red;
+
+            // Apply the background color
+            document.body.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+        });
+    </script>
+</body>
+</html>
